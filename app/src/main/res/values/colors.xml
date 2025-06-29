@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+        <color name="md_theme_light_primary">#FF8E3A</color> <!-- Orange -->
+        <color name="md_theme_light_onPrimary">#FFFFFF</color> <!-- White text on primary -->
+        <color name="md_theme_light_background">#FFFFFF</color>
+        <color name="md_theme_light_onBackground">#000000</color>
+        <color name="md_theme_light_surface">#FFF5E7</color> <!-- light orange bg -->
+        <color name="md_theme_light_onSurface">#000000</color>
+
+
 </resources>

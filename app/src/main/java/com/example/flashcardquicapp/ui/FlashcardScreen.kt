@@ -55,4 +55,5 @@ fun FlashcardScreen(
                         Text(
                             text = if (isFlipped) currentCard.answer else currentCard.question)
                     }
-                    }   }   }}}
+                    }
+        }   }}}
