@@ -1,21 +1,28 @@
 package com.example.flashcardquicapp.data
 
+import android.content.Context
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
 
-import androidx.room.*
-import kotlinx.coroutines.flow.Flow
+@Database(entities = [Flashcard::class], version = 1, exportSchema = false)
+abstract class FlashcardDatabase : RoomDatabase() {
+    abstract fun flashcardDao(): FlashcardDao
 
-@Dao
-interface FlashcardDao {
+    companion object {
+        @Volatile
+        private var INSTANCE: FlashcardDatabase? = null
 
-    @Query("SELECT * FROM flashcards")
-    fun getAllFlashcards(): Flow<List<Flashcard>>
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertFlashcard(flashcard: Flashcard)
-
-    @Update
-    suspend fun updateFlashcard(flashcard: Flashcard)
-
-    @Delete
-    suspend fun deleteFlashcard(flashcard: Flashcard)
+        fun getDatabase(context: Context): FlashcardDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    FlashcardDatabase::class.java,
+                    "flashcard_database"
+                ).build()
+                INSTANCE = instance
+                instance
+            }
+        }
+    }
 }

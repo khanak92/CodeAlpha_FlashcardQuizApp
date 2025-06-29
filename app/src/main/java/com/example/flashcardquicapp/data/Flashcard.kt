@@ -1,7 +1,10 @@
 package com.example.flashcardquicapp.data
 
+import androidx.compose.runtime.Composable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+
 
 @Entity(tableName = "flashcards")
 data class Flashcard(
@@ -9,3 +12,6 @@ data class Flashcard(
     val question: String,
     val answer: String
 )
+
+
+
